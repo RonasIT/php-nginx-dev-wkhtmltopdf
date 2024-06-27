@@ -2,9 +2,8 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches:
-      - main
-      - feat/init
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -32,3 +31,4 @@ jobs:
           tags: |
             ghcr.io/ronasit/php-nginx-dev-wkhtmltopdf:latest
             ghcr.io/ronasit/php-nginx-dev-wkhtmltopdf:${{ github.sha }}
+            ghcr.io/ronasit/php-nginx-dev-wkhtmltopdf:${{ github.ref_name }}
