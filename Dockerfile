@@ -14,6 +14,7 @@ RUN apk add --no-cache \
     freetype \
     ttf-droid \
     ttf-freefont \
-    ttf-liberation 
+    ttf-liberation \
+    libc6-compat
 
 COPY --from=wkhtmltopdf /bin/wkhtmltopdf /app/vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
