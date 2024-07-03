@@ -1,6 +1,5 @@
-FROM surnet/alpine-wkhtmltopdf:3.20.0-0.12.6-full as wkhtmltopdf
-FROM webdevops/php-nginx-dev:8.3-alpine
-
+FROM --platform=$BUILDPLATFORM surnet/alpine-wkhtmltopdf:3.20.0-0.12.6-full AS wkhtmltopdf
+FROM --platform=$BUILDPLATFORM webdevops/php-nginx-dev:8.3-alpine
 
 # wkhtmltopdf install dependencies
 RUN apk add --no-cache \
