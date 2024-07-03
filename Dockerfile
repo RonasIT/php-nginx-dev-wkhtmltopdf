@@ -16,4 +16,7 @@ RUN apk add --no-cache \
     ttf-freefont \
     ttf-liberation
 
-COPY --from=wkhtmltopdf /bin/wkhtmltopdf /app/vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
+ARG TARGETARCH
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
+
+RUN chmod +x /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
