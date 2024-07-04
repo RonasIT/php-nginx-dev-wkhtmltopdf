@@ -18,5 +18,11 @@ RUN apk add --no-cache \
 
 ARG TARGETARCH
 COPY --from=wkhtmltopdf /bin/wkhtmltopdf /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /bin/wkhtmltopdf
+
+COPY --from=wkhtmltopdf /bin/wkhtmltoimage /app/vendor/h4cc/wkhtmltoimage-${TARGETARCH}/bin/wkhtmltoimage-${TARGETARCH}
+COPY --from=wkhtmltopdf /bin/wkhtmltoimage /bin/wkhtmltoimage
 
 RUN chmod +x /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
+RUN chmod +x /bin/wkhtmltopdf
+RUN chmod +x /bin/wkhtmltoimage
