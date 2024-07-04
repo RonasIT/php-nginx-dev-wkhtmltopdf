@@ -14,7 +14,11 @@ RUN apk add --no-cache \
     freetype \
     ttf-droid \
     ttf-freefont \
-    ttf-liberation
+    ttf-liberation \
+    autoconf \
+    g++ \
+    make \
+    linux-headers
 
 ARG TARGETARCH
 COPY --from=wkhtmltopdf /bin/wkhtmltopdf /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
@@ -26,3 +30,10 @@ COPY --from=wkhtmltopdf /bin/wkhtmltoimage /bin/wkhtmltoimage
 RUN chmod +x /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
 RUN chmod +x /bin/wkhtmltopdf
 RUN chmod +x /bin/wkhtmltoimage
+
+RUN pecl uninstall xdebug \
+    && rm -rf /usr/local/lib/php/extensions/no-debug-non-zts-*/xdebug.so \
+    && rm -rf /usr/local/lib/php/extensions/no-debug-non-zts-*/xdebug.so.debug
+
+RUN pecl install xdebug-3.2.2 \
+    && docker-php-ext-enable xdebug
