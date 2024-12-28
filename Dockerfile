@@ -30,3 +30,6 @@ COPY --from=wkhtmltopdf /bin/wkhtmltoimage /bin/wkhtmltoimage
 RUN chmod +x /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGETARCH}
 RUN chmod +x /bin/wkhtmltopdf
 RUN chmod +x /bin/wkhtmltoimage
+
+ENV PHP_MEMORY_LIMIT=2048M
+RUN echo "memory_limit = ${PHP_MEMORY_LIMIT}" >> /etc/php8/php.ini
