@@ -31,4 +31,4 @@ RUN chmod +x /app/vendor/h4cc/wkhtmltopdf-${TARGETARCH}/bin/wkhtmltopdf-${TARGET
 RUN chmod +x /bin/wkhtmltopdf
 RUN chmod +x /bin/wkhtmltoimage
 
-RUN echo "memory_limit = 2048M" >> /etc/php8/php.ini
+RUN echo "memory_limit = 2048M" >> /opt/docker/etc/php/php.ini
